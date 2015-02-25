@@ -1,24 +1,28 @@
 package hu.gyengus.web;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
 import android.net.http.SslError;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebView;
-import android.net.http.SslError;
-//import android.view.Menu;
-//import android.view.MenuItem;
+//import android.net.http.SslError;
 import android.webkit.WebViewClient;
 import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+//import android.util.Log;
+import android.widget.ProgressBar;
 
 
 //public class MainActivity extends ActionBarActivity {
 public class MainActivity extends Activity {
 
     private WebView webView;
+    private ProgressBar mPbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +32,19 @@ public class MainActivity extends Activity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
-        //Get a Tracker (should auto-report)
-        ((MyApplication) getApplication()).getTracker(MyApplication.TrackerName.APP_TRACKER);
+        // Get tracker.
+        Tracker t = ((MyApplication) this.getApplication()).getTracker(MyApplication.TrackerName.APP_TRACKER);
+        // Enable Advertising Features.
+        t.enableAdvertisingIdCollection(true);
+
+        // Set screen name.
+        t.setScreenName("hu.gyengus.web.MainActivity");
+
+        // Send a screen view.
+        t.send(new HitBuilders.AppViewBuilder().build());
+        //Log.i("Tracker: ", t.toString());
+
+        mPbar = (ProgressBar) findViewById(R.id.progressBar);
 
         webView = (WebView) findViewById(R.id.webView);
         webView.getSettings().setJavaScriptEnabled(true);
@@ -40,28 +55,31 @@ public class MainActivity extends Activity {
             public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
                 handler.proceed(); // Ignoráljuk a certificate problémáit, enélkül nem fogadja el a self signed certet
             }
+
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                mPbar.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                mPbar.setVisibility(View.GONE);
+            }
         });
     }
 
-   /* @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        //getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+    @Override
+    public void onStart() {
+        super.onStart();
+        GoogleAnalytics.getInstance(this).reportActivityStart(this);
+        //Log.i("Analytics", "ActivityStart");
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    public void onStop() {
+        super.onStop();
+        GoogleAnalytics.getInstance(this).reportActivityStop(this);
+        //Log.i("Analytics", "ActivityStop");
+    }
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }*/
 }
