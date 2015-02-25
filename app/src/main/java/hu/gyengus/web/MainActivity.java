@@ -1,3 +1,7 @@
+/**
+ * Created by gyengus
+ */
+
 package hu.gyengus.web;
 
 import android.app.Activity;

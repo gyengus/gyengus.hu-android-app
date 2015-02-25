@@ -1,3 +1,6 @@
+/**
+ * Created by gyengus on 2015.02.25
+ */
 package hu.gyengus.web;
 
 import android.app.Application;
@@ -7,9 +10,6 @@ import com.google.android.gms.analytics.Tracker;
 
 import java.util.HashMap;
 
-/**
- * Created by gyengus on 2015.02.25.
- */
 public class MyApplication  extends Application {
     private static final String PROPERTY_ID = "UA-52035824-2";
 
