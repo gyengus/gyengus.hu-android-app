@@ -1,5 +1,14 @@
 <resources>
+    <string name="mainurl">http://gyengus.hu/?utm_source=androidapp</string>
+    <string name="domain">gyengus.hu</string>
+    <string name="rssurl"></string>
+    <string name="main_screen_name">hu.gyengus.web.MainActivity</string>
+    <string name="analytics_id">UA-52035824-2</string>
+
     <string name="app_name">gyengus.hu</string>
 
-    <string name="action_settings">Settings</string>
+    <string name="dialog_title">Kilépés megerősítése</string>
+    <string name="dialog_msg">Biztos, ki akarsz lépni?</string>
+    <string name="yes">Igen</string>
+    <string name="no">Nem</string>
 </resources>
