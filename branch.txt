@@ -1,0 +1,9 @@
+basic
+	Az alapfunkciókat tartalmazza, mûködõ, Playen publikált változat
+	Külsõ linkeket új ablakban nyitja meg
+	Mûködik a Vissza gomb
+	Ha már nem tud vissza menni, akkor rákérdez a kilépésre
+	Google Analytics integrálva
+	Minden szöveg a strings.xml-ben van
+	Az oldal betöltése alatt megjelenik egy tekerõ
+	

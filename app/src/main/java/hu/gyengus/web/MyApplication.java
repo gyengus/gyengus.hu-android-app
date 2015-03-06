@@ -10,7 +10,7 @@ import com.google.android.gms.analytics.Tracker;
 
 import java.util.HashMap;
 
-public class MyApplication  extends Application {
+public class MyApplication extends Application {
     private static final String PROPERTY_ID = "UA-52035824-2";
 
     public enum TrackerName {
