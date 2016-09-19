@@ -1,7 +1,7 @@
 <resources>
-    <string name="mainurl">http://gyengus.hu/?utm_source=androidapp</string>
+    <string name="mainurl">https://gyengus.hu/?utm_source=androidapp</string>
     <string name="domain">gyengus.hu</string>
-    <string name="rssurl">http://gyengus.hu/feed/</string>
+    <string name="rssurl">https://gyengus.hu/feed/</string>
     <string name="main_screen_name">MainActivity</string>
     <string name="analytics_id">UA-52035824-2</string>
 

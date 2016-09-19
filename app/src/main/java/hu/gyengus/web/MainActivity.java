@@ -72,10 +72,10 @@ public class MainActivity extends Activity {
                 return true;
             }
 
-            @Override
+            /*@Override
             public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
                 handler.proceed(); // Ignoráljuk a certificate problémáit, enélkül nem fogadja el a self signed certet
-            }
+            }*/
 
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
