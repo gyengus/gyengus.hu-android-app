@@ -3,7 +3,10 @@ dist: trusty
 
 android:
   components:
-    - tools
-    - platform-tools
-    - android-29
-    - build-tools-28.0.3
+  - tools
+  - platform-tools
+  - android-29
+  - build-tools-28.0.3
+
+before_install:
+- openssl aes-256-cbc -K $encrypted_84829d9ad6d8_key -iv $encrypted_84829d9ad6d8_iv -in google-services.json.enc -out app/google-services.json -d
